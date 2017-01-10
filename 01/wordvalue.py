@@ -1,3 +1,5 @@
+import string
+
 from data import DICTIONARY, LETTER_SCORES
 
 def load_words():
@@ -10,6 +12,9 @@ def calc_word_value(word):
     """Calculate the value of the word entered into function
     using imported constant mapping LETTER_SCORES"""
     word = word.upper()
+    for char in word:
+        if char not in string.ascii_uppercase:
+            word = word.replace(char, '')
     return sum([LETTER_SCORES[letter] for letter in word])
 
 def max_word_value():
