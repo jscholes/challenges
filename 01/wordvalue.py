@@ -17,10 +17,12 @@ def calc_word_value(word):
             word = word.replace(char, '')
     return sum([LETTER_SCORES[letter] for letter in word])
 
-def max_word_value():
+def max_word_value(wordlist=None):
     """Calculate the word with the max value, can receive a list
     of words as arg, if none provided uses default DICTIONARY"""
-    pass
+    if wordlist is None:
+        wordlist = load_words()
+    return max(zip(wordlist, [calc_word_value(word) for word in wordlist]), key=lambda pair: pair[1])[0]
 
 if __name__ == "__main__":
     pass # run unittests to validate
