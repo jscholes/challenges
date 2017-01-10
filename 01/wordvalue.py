@@ -6,10 +6,11 @@ def load_words():
         words = f.readlines()
     return [word.rstrip('\n') for word in words]
 
-def calc_word_value():
+def calc_word_value(word):
     """Calculate the value of the word entered into function
     using imported constant mapping LETTER_SCORES"""
-    pass
+    word = word.upper()
+    return sum([LETTER_SCORES[letter] for letter in word])
 
 def max_word_value():
     """Calculate the word with the max value, can receive a list
